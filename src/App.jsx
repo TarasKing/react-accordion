@@ -4,11 +4,20 @@ import Questions from "./Questions";
 
 function App() {
   const [questions, setQuestions] = useState(data);
+  const [activeId, setActiveId] = useState(null);
+
+  const toggleQuestion = (id) => {
+    const newActiveId = activeId === id ? null : id;
+    setActiveId(newActiveId);
+  };
 
   return (
     <main>
-      <h2>Accordion Starter</h2>
-      <Questions questions={questions} />
+      <Questions
+        questions={questions}
+        activeId={activeId}
+        toggleQuestion={toggleQuestion}
+      />
     </main>
   );
 }
